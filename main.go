@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func generator(nums []int) <-chan int {
 	ch := make(chan int)
 	go func() {
@@ -34,5 +36,9 @@ func sumFunc(ch <-chan int) int {
 }
 
 func main() {
-
+	nums := []int{1, 2, 3, 4, 5}
+	gen := generator(nums)
+	sqrCh := sqr(gen)
+	sum := sumFunc(sqrCh)
+	fmt.Println(sum)
 }
