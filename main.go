@@ -24,6 +24,15 @@ func sqr(ch <-chan int) <-chan int {
 	return out
 }
 
+func sumFunc(ch <-chan int) int {
+	sum := 0
+	for c := range ch {
+		sum += c
+	}
+
+	return sum
+}
+
 func main() {
 
 }
